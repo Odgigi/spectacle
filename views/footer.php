@@ -1,0 +1,33 @@
+<div class="container-fluid bg-dark text-light">
+    <div class="row">
+        <div class="col-sm-12 col-md-4 p-5 text-center">
+            <h2>Suivez-nous</h2>
+            <div class="dropdown-divider bg-light"></div>
+            <div class="align-content space-between">
+            <li class="_1IY4FqMRQAfdfPOfPc01Em"><a target="_blank" draggable="false" class="_2AQozmzfdPUiVM-TDenqrT" tabindex="0" aria-label="Facebook" rel="noopener" href="https://www.facebook.com/canva"><span aria-hidden="true" class="src-ui-base-icons-internal-base_icon__medium src-ui-base-icons-internal-base_icon__icon src-ui-base-icons-facebook_social-styles__facebookColor"><svg fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M21.5 12.058c0-5.28-4.253-9.558-9.5-9.558s-9.5 4.279-9.5 9.558c0 4.771 3.473 8.725 8.016 9.442v-6.68H8.104v-2.762h2.412V9.952c0-2.395 1.417-3.718 3.588-3.718 1.04 0 2.126.186 2.126.186v2.352h-1.198c-1.18 0-1.548.738-1.548 1.494v1.792h2.635l-.421 2.763h-2.214V21.5c4.543-.717 8.016-4.67 8.016-9.442z" fill="currentColor"></path></svg></span></a></li>
+            <li class="_1IY4FqMRQAfdfPOfPc01Em"><a target="_blank" draggable="false" class="_2AQozmzfdPUiVM-TDenqrT" tabindex="0" aria-label="Twitter" rel="noopener" href="https://twitter.com/intent/follow?source=followbutton&amp;variant=1.0&amp;screen_name=canva"><span aria-hidden="true" class="_38UbocJ7v0XuGHN6ANq7TI _31DZ5MmphCuX9JeyDajvNn PXEfdAeESj0KFzsDh0jI0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M19.74 6.69a4.26 4.26 0 001.7-2.38c-.75.5-1.58.85-2.46 1.05A3.73 3.73 0 0016.13 4c-2.15 0-3.89 1.92-3.89 4.3 0 .33.04.66.1.97a10.75 10.75 0 01-8.02-4.48 4.61 4.61 0 001.2 5.73 3.6 3.6 0 01-1.76-.54v.05c0 2.08 1.34 3.82 3.12 4.21a3.56 3.56 0 01-1.75.07 3.97 3.97 0 003.63 2.98A7.36 7.36 0 013 19.07 10.29 10.29 0 008.97 21c7.16 0 11.07-6.54 11.07-12.21l-.01-.56a8.4 8.4 0 001.94-2.22c-.7.34-1.45.57-2.23.68z"></path></svg></span></a></li>
+            <li class="_1IY4FqMRQAfdfPOfPc01Em"><a target="_blank" draggable="false" class="_1UkctCBL9yLllMCmawvSb9 _2AQozmzfdPUiVM-TDenqrT" tabindex="0" aria-label="Pinterest" rel="noopener" href="https://www.pinterest.com/canva/"><span aria-hidden="true" class="_38UbocJ7v0XuGHN6ANq7TI _31DZ5MmphCuX9JeyDajvNn _2mmDbLcrYH8N8_sDR3GNUR"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24" width="24" height="24"><defs><path fill="currentColor" id="_1341459241__a" d="M12 2C6.476 2 2 6.477 2 12c0 4.235 2.636 7.857 6.355 9.314-.087-.791-.166-2.008.035-2.872.182-.78 1.173-4.97 1.173-4.97s-.3-.599-.3-1.485c0-1.39.806-2.428 1.81-2.428.853 0 1.265.64 1.265 1.409 0 .857-.546 2.14-.828 3.329-.236.995.499 1.807 1.48 1.807 1.778 0 3.144-1.874 3.144-4.58 0-2.393-1.72-4.067-4.177-4.067-2.845 0-4.515 2.134-4.515 4.34 0 .859.331 1.78.744 2.281a.3.3 0 01.07.287c-.076.316-.245.995-.278 1.134-.044.183-.145.222-.335.134-1.249-.582-2.03-2.408-2.03-3.874 0-3.154 2.292-6.051 6.608-6.051 3.468 0 6.164 2.472 6.164 5.775 0 3.446-2.173 6.22-5.189 6.22-1.013 0-1.966-.527-2.292-1.149l-.623 2.377c-.225.869-.835 1.958-1.242 2.622a9.98 9.98 0 002.96.446c5.523 0 10-4.477 10-10 0-5.522-4.477-9.999-10-9.999"></path></defs><use fill="#BD081C" xlink:href="#_1341459241__a" fill-rule="evenodd"></use></svg></span></a></li>
+            <li class="_1IY4FqMRQAfdfPOfPc01Em"><a target="_blank" draggable="false" class="_2AQozmzfdPUiVM-TDenqrT" tabindex="0" aria-label="Instagram" rel="noopener" href="https://www.instagram.com/canva/"><span aria-hidden="true" class="_38UbocJ7v0XuGHN6ANq7TI _31DZ5MmphCuX9JeyDajvNn"><svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><linearGradient x1="0%" y1="100%" y2="0%" id="_3942385086__a"><stop stop-color="#FFD520" offset="0%"></stop><stop stop-color="#F50000" offset="49.7%"></stop><stop stop-color="#B900B4" offset="100%"></stop></linearGradient><path d="M12 3c-2.445 0-2.75.011-3.71.054-.959.045-1.611.196-2.185.419A4.396 4.396 0 004.511 4.51c-.5.5-.81 1.001-1.038 1.594-.223.574-.375 1.226-.419 2.185C3.009 9.25 3 9.555 3 12s.011 2.75.054 3.71c.045.959.196 1.612.419 2.185a4.377 4.377 0 001.038 1.594c.5.5 1.001.81 1.594 1.038.574.223 1.226.375 2.185.419.96.045 1.265.054 3.71.054 2.445 0 2.75-.011 3.71-.054.959-.045 1.612-.196 2.185-.419a4.396 4.396 0 001.594-1.038c.5-.5.81-1.001 1.038-1.594.223-.574.375-1.226.419-2.185.045-.96.054-1.265.054-3.71 0-2.445-.011-2.75-.054-3.71-.045-.959-.196-1.612-.419-2.185a4.396 4.396 0 00-1.038-1.594c-.5-.5-1.001-.81-1.594-1.038-.574-.223-1.226-.375-2.185-.419C14.75 3.009 14.445 3 12 3zm0 1.62c2.403 0 2.689.011 3.637.054.878.04 1.354.187 1.67.31.422.164.72.358 1.036.673.315.315.51.614.672 1.035.124.317.27.793.311 1.67.043.95.053 1.235.053 3.638 0 2.403-.011 2.689-.056 3.637-.045.878-.192 1.354-.315 1.67-.17.422-.36.72-.675 1.036-.315.315-.62.51-1.035.672-.315.124-.8.27-1.677.311-.956.043-1.237.053-3.645.053-2.407 0-2.688-.011-3.645-.056-.877-.045-1.36-.192-1.676-.315a2.801 2.801 0 01-1.035-.675 2.753 2.753 0 01-.675-1.035c-.124-.315-.27-.8-.315-1.677-.034-.945-.045-1.237-.045-3.633 0-2.397.011-2.69.045-3.645.045-.878.191-1.362.315-1.677.158-.427.36-.72.675-1.035a2.668 2.668 0 011.035-.675c.315-.123.788-.27 1.665-.315.956-.033 1.238-.045 3.645-.045L12 4.62zm0 2.758a4.621 4.621 0 100 9.243 4.621 4.621 0 000-9.242zM12 15a3 3 0 110-6 3 3 0 010 6zm5.884-7.804a1.08 1.08 0 11-2.16 0 1.08 1.08 0 012.16 0z" id="_3942385086__b"></path></defs><use fill="url(#_3942385086__a)" xlink:href="#_3942385086__b" fill-rule="evenodd"></use></svg></span></a></li>
+            </div>
+            <!-- <p><a href="index.php?page=home" class="text-light">Accueil</a></p>
+            <p><a href="index.php?page=posts" class="text-light">Articles</a></p>
+            <p><a href="index.php?page=contact" class="text-light">Contact</a></p>
+            <p><a href="index.php?page=donate" class="text-light">Faire un don</a></p> -->
+        </div>
+        <div class="col-sm-12 col-md-4 p-5 text-center">
+            <p class="text-center">
+                <img src="assets/img_spectacle/logo(2).png" alt="logo ?VOIR_ce_soir" class="w-100">
+            </p>
+        </div>
+        <div class="col-sm-12 col-md-4 p-5 text-center">
+            <h2>COORDONNÉES</h2>
+            <div class="dropdown-divider bg-light"></div>
+            <div class="text-center">
+                123 Rue du Spectacle<br>
+                91330 Villeparisis<br>
+                01 23 45 67 89<br>
+                ?voircesoir@domaine.com<br>
+            </div>
+        </div>
+    </div>
+</div>

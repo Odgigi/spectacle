@@ -1,0 +1,54 @@
+/* **************************************** RESET **************************************** */
+
+    * {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        text-decoration: none;
+    }
+
+/* **************************************** GLOBAL **************************************** */
+
+    * {
+        font-weight: lighter;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    h1 {
+        font-size: 2em;
+        font-weight: 300;
+        margin-bottom: 1em;
+    }
+
+    h2 {
+        font-size: 1.5em;
+        font-weight: 300;
+        margin-top: 1em;
+        margin-bottom: 1em;
+    }
+
+    h3 {
+        font-size: 1.25em;
+    }
+
+    p {
+        text-align: justify;
+    }
+
+/* **************************************** HEADER **************************************** */
+
+    header nav img {
+        max-height: 35px;
+    }
+
+/* **************************************** MAIN **************************************** */
+
+    table img {
+        max-width: 200px;
+    }
+
+/* **************************************** FOOTER **************************************** */
+

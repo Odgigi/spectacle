@@ -39,7 +39,7 @@ git add * (tous les fichiers)
 - préciser un message pour le commit -m:
 ```
 git commit -m "init"
-
+```
 - récupérer les dernières modifications:
 ```
 git pull origin master
