@@ -5,7 +5,7 @@
     }
     session_destroy();
     require_once('../config/database.php');
-    $req = $db->query('SELECT id, titre, nom, catégorie, première, dernière, ville, salle, visuel, alt, présentation FROM spectacles ORDER BY id DESC');
+    $req = $db->query('SELECT id, titre, nom, categorie, premiere, derniere, ville, salle, visuel, alt, presentation FROM spectacles ORDER BY id DESC');
     $posts = $req->fetchAll();
 ?>
 
@@ -41,7 +41,6 @@
                     <th>VILLE</th>
                     <th>SALLE</th>
                     <th>VISUEL</th>
-                    <th>TEXTE ALTERNATIF</th>
                     <TH>PRESENTATION</TH>
                 </tr>
             </thead>
@@ -52,14 +51,13 @@
                             <td><?= $post['id'] ?></td>
                             <td><?= $post['titre'] ?></td>
                             <td><?= $post['nom'] ?></td>
-                            <td><?= $post['catégorie'] ?></td>
-                            <td><?= $post['première'] ?></td>
-                            <td><?= $post['dernière'] ?></td>
+                            <td><?= $post['categorie'] ?></td>
+                            <td><?= $post['premiere'] ?></td>
+                            <td><?= $post['derniere'] ?></td>
                             <td><?= $post['ville'] ?></td>
                             <td><?= $post['salle'] ?></td>
-                            <td><?= $post['visuel'] ?></td>
-                            <td><?= $post['alt'] ?></td>
-                            <td><?= $post['présentation'] ?></td>
+                            <td><img src="../assets/img_spectacle/<?= $post['visuel'] ?>" alt="<?= $post['alt'] ?>"></td>
+                            <td><?= $post['presentation'] ?></td>
                             <td>
                                 <a href="#"><i class="fas fa-pen-square"></i></a>
                                 <a href="treatment.php?delete=<?= $post['id'] ?>"><i class="fas fa-trash"></i></a>

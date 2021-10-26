@@ -31,12 +31,12 @@
                                 <td><?= $i ?></td>
                                 <td><?= $post['titre'] ?></td>
                                 <td><?= $post['nom'] ?></td>
-                                <td><?= $post['catégorie'] ?></td>
-                                <td><?= date('Y-m-d', strtotime($post['première'])) ?></td>
-                                <td><?= date('Y-m-d', strtotime($post['dernière'])) ?></td>
-                                <td><?= $post['ville'] . '-' . ['salle'] ?></td>
-                                <td><img src="assets/img-spectacles/<?= $post['visuel'] ?>" alt="<?= $post['alt'] ?>"></td>
-                                <td><?= substr($post['présentation'], 0, 200) ?></td>
+                                <td><?= $post['categorie'] ?></td>
+                                <td><?= date('Y-m-d', strtotime($post['premiere'])) ?></td>
+                                <td><?= date('Y-m-d', strtotime($post['derniere'])) ?></td>
+                                <td><?= $post['ville'] . ' - ' . $post['salle'] ?></td>
+                                <td><img src="assets/img_spectacle/<?= $post['visuel'] ?>" alt="<?= $post['alt'] ?>"></td>
+                                <td><?= substr($post['presentation'], 0, 200) ?></td>
                                 <td><a href="index.php?page=spectacles&spectacle=<?= $post['id'] ?>"><i class="fas fa-eye"></i></a></td>
                             </tr>
                         <?php 

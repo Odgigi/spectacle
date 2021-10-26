@@ -9,13 +9,13 @@ if ($_SERVER['HTTP_REFERER'] == 'http://localhost/PHP/spectacle/admin/form.php')
     // nettoyage des données
     $title = htmlspecialchars($_POST['titre']);
     $author = htmlspecialchars($_POST['nom']);
-    $category = htmlspecialchars($_POST['catégorie']);
-    $premiere = date_format (new \DateTime($_POST['première']), "Y-m-d H:i");
-    $derniere = date_format (new \DateTime($_POST['dernière']), "Y-m-d H:i");
+    $category = htmlspecialchars($_POST['categorie']);
+    $premiere = date_format (new \DateTime($_POST['premiere']), "Y-m-d H:i");
+    $derniere = date_format (new \DateTime($_POST['derniere']), "Y-m-d H:i");
     $town = htmlspecialchars($_POST['ville']);
     $theater = htmlspecialchars($_POST['salle']);
     $alt = htmlspecialchars($_POST['alt']);
-    $content = htmlspecialchars($_POST['présentation']);
+    $content = htmlspecialchars($_POST['presentation']);
 
     $errorMessage = '<p>Merci de vérifier les points suivants :</p>';
     $validation = true;
@@ -32,9 +32,9 @@ if ($_SERVER['HTTP_REFERER'] == 'http://localhost/PHP/spectacle/admin/form.php')
         $validation = false;
     }
 
-    // vérification du champ catégorie
+    // vérification du champ categorie
     if (empty($category) || strlen($category) > 30) {
-        $errorMessage .= '<p>- le champ "catégorie" est obligatoire et doit comporter moins de 30 caractères.</p>';
+        $errorMessage .= '<p>- le champ "categorie" est obligatoire et doit comporter moins de 30 caractères.</p>';
         $validation = false;
     }
 
@@ -56,9 +56,9 @@ if ($_SERVER['HTTP_REFERER'] == 'http://localhost/PHP/spectacle/admin/form.php')
         $validation = false;
     }
 
-    // vérification du champ Présentation
+    // vérification du champ Presentation
     if (empty($content) || strlen($content) > 65535) {
-        $errorMessage .= '<p>- le champ "présentation" est obligatoire et doit comporter moins de 65535 caractères.</p>';
+        $errorMessage .= '<p>- le champ "presentation" est obligatoire et doit comporter moins de 65535 caractères.</p>';
         $validation = false;
     }
 
@@ -79,19 +79,19 @@ if ($_SERVER['HTTP_REFERER'] == 'http://localhost/PHP/spectacle/admin/form.php')
         $timestamp = time(); // récupère le nombre de secondes écoulées depuis le 1er janvier 1970
         $format = strchr($_FILES['visuel']['name'], '.'); // récupère tout ce qui se trouve après le point (png, jpg, ...)
         $imgName = $timestamp . $format; // crée le nouveau nom d'image
-        $req = $db->prepare('INSERT INTO spectacles (titre, nom, catégorie, première, dernière, ville, salle, visuel, alt, présentation) VALUES (:titre, :nom, :catégorie, :première, :dernière, :ville, :salle, :visuel, :alt,:présentation)');
+        $req = $db->prepare('INSERT INTO spectacles (titre, nom, categorie, premiere, derniere, ville, salle, visuel, alt, presentation) VALUES (:titre, :nom, :categorie, :premiere, :derniere, :ville, :salle, :visuel, :alt,:presentation)');
         $req->bindParam(':titre', $title, PDO::PARAM_STR);
         $req->bindParam(':nom', $author, PDO::PARAM_STR);
-        $req->bindParam(':catégorie', $category, PDO::PARAM_STR);
-        $req->bindParam(':première', $premiere, PDO::PARAM_NULL);
-        $req->bindParam(':dernière', $derniere, PDO::PARAM_NULL);
-        $req->bindParam(':ville', $ville, PDO::PARAM_STR);
-        $req->bindParam(':salle', $salle, PDO::PARAM_STR);
+        $req->bindParam(':categorie', $category, PDO::PARAM_STR);
+        $req->bindParam(':premiere', $premiere, PDO::PARAM_STR);
+        $req->bindParam(':derniere', $derniere, PDO::PARAM_STR);
+        $req->bindParam(':ville', $town, PDO::PARAM_STR);
+        $req->bindParam(':salle', $theater, PDO::PARAM_STR);
         $req->bindParam(':visuel', $imgName, PDO::PARAM_STR);
         $req->bindParam(':alt', $alt, PDO::PARAM_STR);
-        $req->bindParam(':présentation', $content, PDO::PARAM_STR);
+        $req->bindParam(':presentation', $content, PDO::PARAM_STR);
         $req->execute(); // exécute la requête
-        move_uploaded_file($_FILES['visuel']['tmp_name'], '../assets/img-spectacles/' . $imgName); // upload du fichier
+        move_uploaded_file($_FILES['visuel']['tmp_name'], '../assets/img_spectacle/' . $imgName); // upload du fichier
         $_SESSION['notification'] = 'Le spectacle a bien été ajouté';
         header('Location: index.php'); // redirection
     } else {
@@ -99,9 +99,9 @@ if ($_SERVER['HTTP_REFERER'] == 'http://localhost/PHP/spectacle/admin/form.php')
         $_SESSION['form'] = [
             'title' => $title,
             'nom' => $author,
-            'catégorie' => $category,
+            'categorie' => $category,
             'premiere' => $premiere,
-            'dernière' => $derniere,
+            'derniere' => $derniere,
             'ville' => $town,
             'salle' => $theater,
             'alt' => $alt,
@@ -160,8 +160,8 @@ if ($_SERVER['HTTP_REFERER'] == 'http://localhost/PHP/spectacle/admin/form.php')
     $id = (int)$_GET['delete'];
     $req = $db->query('SELECT visuel FROM spectacles WHERE id=' . $id); // récupère le nom de l'image
     $oldImg = $req->fetch();
-    if (file_exists('../assets/img-spectacles/' . $oldImg['visuel'])) { // vérifie que le fichier existe
-        unlink('../assets/img-spectacles/' . $oldImg['visuel']); // supprime l'image du dossier local
+    if (file_exists('../assets/img_spectacle/' . $oldImg['visuel'])) { // vérifie que le fichier existe
+        unlink('../assets/img_spectacle/' . $oldImg['visuel']); // supprime l'image du dossier local
     }
     $reqDelete = $db->query('DELETE FROM spectacles WHERE id=' . $id); // supprime les données en bdd
     $_SESSION['notification'] = 'Le spectacle a bien été supprimé';

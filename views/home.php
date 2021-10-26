@@ -14,12 +14,12 @@
             foreach ($posts as $post) { ?>
                 <div class="col-sm-12 col-md-4 p-3">
                     <div class="card">
-                        <img src="assets/img-spectacles/<?= $post['visuel'] ?>" class="card-img-top" alt="<?= $post['alt'] ?>">
+                        <img src="assets/img_spectacle/<?= $post['visuel'] ?>" class="card-img-top" alt="<?= $post['alt'] ?>">
                         <div class="card-body">
                             <h5 class="card-title"><?= $post['titre'] . ' - ' . $post['nom'] ?></h5>
-                            <h6 class="card-subtitle mb-2 text-muted"><?= date('Y-m-d', strtotime($post['première'])) . ' - ' . $post['dernière'] ?></h6>
-                            <p class="card-text"><?= substr($post['content'], 0, 200) . '...' ?></p>
-                            <a href="index.php?page=spectacles&spectacle=<?= $post['id'] ?>" class="btn btn-secondary">Lire la suite</a>
+                            <h6 class="card-subtitle mb-2 text-muted"><?= date('Y-m-d', strtotime($post['premiere'])) . ' - ' . $post['derniere'] ?></h6>
+                            <p class="card-text"><?= substr($post['presentation'], 0, 200) . '...' ?></p>
+                            <a href="index.php?page=spectacle&spectacle=<?= $post['id'] ?>" class="btn btn-secondary">Lire la suite</a>
                         </div>
                     </div>
                 </div>
