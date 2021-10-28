@@ -20,7 +20,7 @@
             </p>
         </div>
         <div class="col-sm-12 col-md-4 p-5 text-center">
-            <h2>COORDONNÉES</h2>
+            <h2>Coordonnées</h2>
             <div class="dropdown-divider bg-light"></div>
             <div class="text-center">
                 123 Rue du Spectacle<br>

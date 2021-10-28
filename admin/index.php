@@ -71,5 +71,32 @@
         <a href="form.php">Ajouter un spectacle</a>
         
     </body>
-
 </html>
+<?php
+        //  if(isset($_POST['update'])) {
+        //     $dbhost = 'localhost';
+        //     $dbname = 'spectacle';
+        //     $dbuser = 'root';
+        //     $dbpass = '';
+            
+        //     $conn = mysql_connect($dbhost, $dbname, $dbuser, $dbpass);
+            
+        //     if(! $conn ) {
+        //        die('Could not connect: ' . mysql_error());
+        //     }
+            
+        //     $id = (int)$_POST['update'];
+        //     $reqUpdate = $db->query('UPDATE spectacles WHERE id=' . $id);
+        //     $sql = "UPDATE spectacles (titre, nom, categorie, premiere, derniere, ville, salle, visuel, alt, presentation)". "SET (:titre, :nom, :categorie, :premiere, :derniere, :ville, :salle, :visuel, :alt,:presentation) ". 
+        //        "WHERE id= $id";
+        //     mysql_select_db('test_db');
+        //     $retval = mysql_query( $sql, $conn );
+            
+        //     if(! $retval ) {
+        //        die('Could not update data: ' . mysql_error());
+        //     }
+        //     echo "Updated data successfully\n";
+            
+        //     mysql_close($conn);
+        //  }
+?>

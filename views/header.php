@@ -12,13 +12,13 @@
                     <a class="nav-link" href="index.php?page=home">Accueil</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="index.php?page=posts">Articles</a>
+                    <a class="nav-link" href="index.php?page=spectacles">Spectacles</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.php?page=magazine">Magazine</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="index.php?page=contact">Contact</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="index.php?page=donate">Faire un don</a>
                 </li>
             </ul>
         </div>
