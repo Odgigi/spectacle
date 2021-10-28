@@ -59,7 +59,7 @@
                             <td><img src="../assets/img_spectacle/<?= $post['visuel'] ?>" alt="<?= $post['alt'] ?>"></td>
                             <td><?= $post['presentation'] ?></td>
                             <td>
-                                <a href="#"><i class="fas fa-pen-square"></i></a>
+                                <a href="form.php?update=<?= $post['id'] ?>"><i class="fas fa-pen-square"></i></a>
                                 <a href="treatment.php?delete=<?= $post['id'] ?>"><i class="fas fa-trash"></i></a>
                             </td>
                         </tr>    

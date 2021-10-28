@@ -4,7 +4,7 @@ session_start();
 
 require_once('../config/database.php');
 
-if ($_SERVER['HTTP_REFERER'] == 'http://localhost/PHP/spectacle/admin/form.php') { // vérifie qu'on vient bien du formulaire
+if ($_SERVER['HTTP_REFERER'] == 'http://localhost/PHP/spectacle/admin/form.php' || (isset($_GET['update']) && !empty($_GET['update']))) { // vérifie qu'on vient bien du formulaire
 
     // nettoyage des données
     $title = htmlspecialchars($_POST['titre']);
@@ -19,6 +19,13 @@ if ($_SERVER['HTTP_REFERER'] == 'http://localhost/PHP/spectacle/admin/form.php')
 
     $errorMessage = '<p>Merci de vérifier les points suivants :</p>';
     $validation = true;
+
+    if ($_GET['update']) {
+        $action = 'update';
+        $id = (int)$_GET['update'];
+    } else {
+        $action = 'create';
+    }
 
     // vérification du titre
     if (empty($title) || strlen($title) > 200) {
@@ -70,17 +77,35 @@ if ($_SERVER['HTTP_REFERER'] == 'http://localhost/PHP/spectacle/admin/form.php')
         'image/jp2',
         'image/webp'
     ];
-    if (empty($_FILES['visuel']['name']) || $_FILES['visuel']['size'] > 2000000 || !in_array($_FILES['visuel']['type'], $authorizedFormats)) {
-        $errorMessage .= '<p>- l\'image est obligatoire, ne doit pas dépasser 2 Mo et doit être au format PNG, JPG, JPEG, JP2 ou WEBP.</p>';
-        $validation = false;
+
+    // Vérification de l'image
+    if ($action === 'create' || ($action === 'update' && $_FILES['visuel']['name'])) {  // (seulement) si création ou si besoin d'une image lors de la modification
+        if (empty($_FILES['visuel']['name']) || $_FILES['visuel']['size'] > 2000000 || !in_array($_FILES['visuel']['type'], $authorizedFormats)) {
+            $errorMessage .= '<p>- l\'image est obligatoire, ne doit pas dépasser 2 Mo et doit être au format PNG, JPG, JPEG, JP2 ou WEBP.</p>';
+            $validation = false;
+        } else {
+            $timestamp = time(); // récupère le nombre de secondes écoulées depuis le 1er janvier 1970
+            $format = strchr($_FILES['visuel']['name'], '.'); // récupère tout ce qui se trouve après le point (png, jpg, ...)
+            $imgName = $timestamp . $format; // crée le nouveau nom d'image
+            move_uploaded_file($_FILES['visuel']['tmp_name'], '../assets/img_spectacle/' . $imgName); // upload du fichier
+        }
     }
-    
+
     if ($validation === true) {
-        $timestamp = time(); // récupère le nombre de secondes écoulées depuis le 1er janvier 1970
-        $format = strchr($_FILES['visuel']['name'], '.'); // récupère tout ce qui se trouve après le point (png, jpg, ...)
-        $imgName = $timestamp . $format; // crée le nouveau nom d'image
-        
-        $req = $db->prepare('INSERT INTO spectacles (titre, nom, categorie, premiere, derniere, ville, salle, visuel, alt, presentation) VALUES (:titre, :nom, :categorie, :premiere, :derniere, :ville, :salle, :visuel, :alt,:presentation)');
+        if ($action === 'create') {  // pour la création
+            $req = $db->prepare('INSERT INTO spectacles (titre, nom, categorie, premiere, derniere, ville, salle, visuel, alt, presentation) VALUES (:titre, :nom, :categorie, :premiere, :derniere, :ville, :salle, :visuel, :alt,:presentation)');  // on prépare la requête
+        } else {
+            $reqImg = $db->query('SELECT visuel FROM spectacles WHERE id=' . $id);
+            $oldImg = $reqImg->fetch();
+            if (isset($imgName)) {
+                if (file_exists('../assets/img_spectacle' . $oldImg['visuel'])) {
+                    unlink('../assets/img_spectacle' . $oldImg['visuel']);  
+                }
+            } else {  // pour l'update
+                $imgName = $oldImg['visuel'];
+            }
+            $req = $db->prepare('UPDATE spectacles SET titre=:titre, nom=:nom, categorie=:categorie, premiere=:premiere, derniere=:derniere, ville=:ville, salle=:salle, visuel=:visuel, alt=:alt, presentation=:presentation WHERE id=' .$id);  // idem pour l'update
+        }
         $req->bindParam(':titre', $title, PDO::PARAM_STR);
         $req->bindParam(':nom', $author, PDO::PARAM_STR);
         $req->bindParam(':categorie', $category, PDO::PARAM_STR);
@@ -92,10 +117,13 @@ if ($_SERVER['HTTP_REFERER'] == 'http://localhost/PHP/spectacle/admin/form.php')
         $req->bindParam(':alt', $alt, PDO::PARAM_STR);
         $req->bindParam(':presentation', $content, PDO::PARAM_STR);
         $req->execute(); // exécute la requête
-        move_uploaded_file($_FILES['visuel']['tmp_name'], '../assets/img_spectacle/' . $imgName); // upload du fichier
-        $_SESSION['notification'] = 'Le spectacle a bien été ajouté';
+        if ($action === 'create') {
+            $_SESSION['notification'] = 'Le spectacle a bien été ajouté';
+        } else {
+            $_SESSION['notification'] = 'Le spectacle a bien été modifié';
+        }
         header('Location: index.php'); // redirection vers l'espace administrateur où sont stockées les données
-    } else {
+    } else {  // s'il y a une erreur, sinon s'arrête au-dessus
         $_SESSION['notification'] = $errorMessage;
         $_SESSION['form'] = [
             'title' => $title,
@@ -110,26 +138,7 @@ if ($_SERVER['HTTP_REFERER'] == 'http://localhost/PHP/spectacle/admin/form.php')
         ];
         header('Location: form.php'); // redirection vers le formulaire qui affiche le message d'erreur
     }
-} 
-    elseif (isset($_POST['update'])) {
-    $id = (int)$_POST['update'];
-    $reqUpdate = $db->query('UPDATE spectacles WHERE id=' . $id);
-    $reqUpdate = $db->prepare('UPDATE spectacles (titre, nom, categorie, premiere, derniere, ville, salle, visuel, alt, presentation). SET (:titre, :nom, :categorie, :premiere, :derniere, :ville, :salle, :visuel, :alt,:presentation). WHERE ($title, $author, $category, $premiere, $derniere, $town, $theater, $imgName, $alt, $content)');
-        $reqUpdate->bindParam(':titre', $title, PDO::PARAM_STR);
-        $reqUpdate->bindParam(':nom', $author, PDO::PARAM_STR);
-        $reqUpdate->bindParam(':categorie', $category, PDO::PARAM_STR);
-        $reqUpdate->bindParam(':premiere', $premiere, PDO::PARAM_STR);
-        $reqUpdate->bindParam(':derniere', $derniere, PDO::PARAM_STR);
-        $reqUpdate->bindParam(':ville', $town, PDO::PARAM_STR);
-        $reqUpdate->bindParam(':salle', $theater, PDO::PARAM_STR);
-        $reqUpdate->bindParam(':visuel', $imgName, PDO::PARAM_STR);
-        $reqUpdate->bindParam(':alt', $alt, PDO::PARAM_STR);
-        $reqUpdate->bindParam(':presentation', $content, PDO::PARAM_STR);
-        $reqUpdate->execute();
-    $_SESSION['notification'] = 'Le spectacle a bien été modifié';
-    header('Location: form.php'); // redirection vers le formulaire pour modifier les données
-} 
-    elseif (isset($_GET['delete']) && !empty($_GET['delete'])) {
+} elseif (isset($_GET['delete']) && !empty($_GET['delete'])) {
     $id = (int)$_GET['delete'];
     $req = $db->query('SELECT visuel FROM spectacles WHERE id=' . $id); // récupère le nom de l'image
     $oldImg = $req->fetch();
@@ -139,5 +148,6 @@ if ($_SERVER['HTTP_REFERER'] == 'http://localhost/PHP/spectacle/admin/form.php')
     $reqDelete = $db->query('DELETE FROM spectacles WHERE id=' . $id); // supprime les données en bdd
     $_SESSION['notification'] = 'Le spectacle a bien été supprimé';
     header('Location: index.php'); // redirection vers l'espace administrateur qui affiche la suppression de l'id
-} 
+}
+
 ?>
